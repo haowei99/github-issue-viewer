@@ -6,7 +6,10 @@
       color="#E91E63"
     >
       <div class="d-flex align-center">
-        
+      <v-btn href="/" icon>
+        <v-icon class="white--text">home</v-icon>
+      </v-btn>
+      <h2 class="white--text ml-2">GitHub Issue Viewer</h2>
       </div>
 
       <v-spacer></v-spacer>
