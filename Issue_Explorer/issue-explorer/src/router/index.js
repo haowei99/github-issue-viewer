@@ -12,7 +12,7 @@ const routes = [
       component: Home
     },
     {
-        path: '/view/:repoId',
+        path: '/view/:repoLink',
         name: 'IssueViewer',
         component: IssueViewer,
         props: true

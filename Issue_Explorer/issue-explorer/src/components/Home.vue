@@ -7,7 +7,7 @@
             </h1>
          </b>
       </div>
-      <v-toolbar class="search">
+      <v-toolbar class="search mt-4 mb-4">
             <v-text-field
                v-model="repoLink"
                hide-details
@@ -27,7 +27,7 @@
     }),
     methods: {
         goToIssueViewer(){
-             this.$router.push('/view/' + this.repoLink)
+            this.$router.push({ name: 'IssueViewer', params: {repoLink: this.repoLink }})
         }
     }
 }
