@@ -1,6 +1,6 @@
 <template>
    <div class="home">
-      <div class="container">
+      <div class="container pad">
          <b>
             <h1 class="white--text display-4">
                GitHub Issue Viewer
@@ -38,7 +38,9 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   padding-top: 20%;
+   }
+   .pad{
+      padding-top:20%
    }
    .search{
        width:50%;

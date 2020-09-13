@@ -19,20 +19,51 @@
          <span class="mr-2">https://github.com/facebook/react</span>
          </a>
       </v-app-bar>
-      <v-row class="text-center" v-if="hasError">
-         <v-col class="mb-4">
-            <h1 class="display-2 font-weight-bold mb-3">
-               {{this.error}}
-            </h1>
-         </v-col>
-      </v-row>
-      <v-row class="text-center" v-else-if="noResult">
-         <v-col class="mb-4">
-            <h1 class="display-2 font-weight-bold mb-3">
-               No issues found on this repo!
-            </h1>
-         </v-col>
-      </v-row>
+      <v-container mt-15>
+        <v-row class="text-center" v-if="hasError">
+          <v-col class="mb-4">
+              <h1 class="display-2 font-weight-bold mb-3">
+                {{this.error}}
+              </h1>
+          </v-col>
+        </v-row>
+        <v-row class="text-center" v-else-if="noResult">
+          <v-col class="mb-4">
+              <h1 class="display-2 font-weight-bold mb-3">
+                No issues found on this repo!
+              </h1>
+          </v-col>
+        </v-row>
+        <v-container fluid grid-list-sm>
+          <v-layout row wrap>
+            <v-flex v-for="(issue,index) in this.info" :key="index" xs4>
+              <v-card elevation=4 class='card-height'>
+                <v-card-title class="card-title mb-10">{{issue.title | truncate(65, '...') }}</v-card-title>
+                <v-card-subtitle class="desc">
+                  {{issue.body | truncate(100, '...')}} <a target="blank" :href="issue.html_url">(link)</a>
+                  <br>
+                <v-tooltip bottom open-delay="300" v-for= "(lab, labIndex) in issue.labels" :key="labIndex">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-chip x-small color="#E91E63" class="chip white--text" v-bind="attrs" v-on="on">
+                    {{lab.name | truncate(9, '...') }}
+                  </v-chip>
+                </template>
+                <span>{{lab.name}}</span>
+                </v-tooltip>
+                </v-card-subtitle>
+                
+                <img v-if="issue.pull_request" class="icon" src="../assets/pull-request.svg">
+                <img v-else-if="issue.state==='close'" class="icon" src="../assets/issue-closed.svg">
+                
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+
+      
+      </v-container>
+
+
    </v-container>
 </template>
 <script>
@@ -57,7 +88,7 @@
           }
           else{
             this.info = response.data
-            
+
           }
           
            console.log(response)
@@ -70,9 +101,32 @@
        })
    
        console.log(this.repoLink)
-     }
+     },
+     methods:{
+     },
    }
 </script>
 <style>
-   @import '../style.css' 
+   @import '../style.css';
+   .card-title{
+     color: #FFFFFF;
+     background-color: #3F51b5;
+     font-size:18px !important;
+     height: 5em;
+   }
+   .card-height{
+     height:15em
+   }
+   .chip{
+     font-size:9px !important;
+     margin-right: 0.5em
+   }
+   .desc{
+    height: 7.4em;
+   }
+   .icon{
+     width: 10px;
+     height: 10px;
+     margin-left: 95%;
+   }
 </style>
