@@ -43,8 +43,7 @@
 > How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging").
 
 - It took me around 6 hours to deliver the final product
-
-- 1h spent on reviewing Vue, architecting, and setting up the project
+  - 1h spent on reviewing Vue, architecting, and setting up the project
   - 3.5h Coding, implementing features, learning how to use Github API
   - 1h Debugging + CSS + Making website responsive to laptops, ipads, and iphones
   - .5h typing this document + reflection
