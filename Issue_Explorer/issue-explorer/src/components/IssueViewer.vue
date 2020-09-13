@@ -92,7 +92,7 @@
          }
          else if (this.filter === 'pr'){
            return this.info.filter((issue) => {
-             return issue.pull_request
+             return issue.pull_request && issue.state === 'open'
            })
          }
          else{
