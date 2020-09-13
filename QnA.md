@@ -28,13 +28,13 @@
 
 - For design purposes, I used Vuetify, a material design framework to help me with the css and styling. I think it is the correct choice because it saved me a lot of time building components from scratch (such as cards, serach bards etc...)
 
--I had to carefully plan out my components in order to use routing. I decided to pass the github link as a prop from the home page to the display issue page so that I am able to allow user to share states via URL. I was thinking about this before starting the project so it made the bonus task really easy to implment after the structures are set up.
+- I had to carefully plan out my components in order to use routing. I decided to pass the github link as a prop from the home page to the display issue page so that I am able to allow user to share states via URL. I was thinking about this before starting the project so it made the bonus task really easy to implment after the structures are set up.
 
 - I decided to make one API call (maximum of 30 issues) to pull all the issues and kept it in a state for me to filter afterwards. That means the website only has to load once for each repo instead of recalling apis evertime a filter is clicked. Since I do not have time for pagination, I purposesly not pull all the issues incase there are thousands of cases in a repo and it would take a while to fetch all those reposnses. If I were to implement pagination, I would display only a certain amount of issues in one page and do a server-side pagination.
 
--Instead of the X button on the display issue page, I used a home button icon on the navbar for users to go back to home page (for me it looks cleaner than the mock up) 
+- Instead of the X button on the display issue page, I used a home button icon on the navbar for users to go back to home page (for me it looks cleaner than the mock up) 
 
--Bonus features I implmented:
+- Bonus features I implmented:
   1. Animation, link to repo on each issue
   2. Covered the case when repo is not found or there is no issue in a repo
   3. Allow users to be share states via URLs
