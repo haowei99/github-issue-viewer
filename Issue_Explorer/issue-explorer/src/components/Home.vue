@@ -2,12 +2,12 @@
    <div class="home">
       <div class="container pad">
          <b>
-            <h1 class="white--text display-4">
+            <h1 class="white--text display-4"  data-aos="fade-up" data-aos-duration="1200">
                GitHub Issue Viewer
             </h1>
          </b>
       </div>
-      <v-toolbar class="search mt-4 mb-4">
+      <v-toolbar class="search mt-4 mb-4"  data-aos="fade-up" data-aos-duration="1700">
             <v-text-field
                v-model="repoLink"
                hide-details

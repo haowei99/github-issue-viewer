@@ -24,22 +24,22 @@
       <v-container fluid grid-list-sm class="content">
          <v-layout row wrap>
             <v-flex class="text-center" v-if="hasError" md12>
-                  <h1 class="display-2 font-weight-bold mb-3">
+                  <h1 class="display-2 font-weight-bold mb-3" data-aos="fade" data-aos-duration="1200">
                      {{this.error}}
                   </h1>
             </v-flex>
-            <v-flex class="text-center" v-else-if="noResult" md12>
+            <v-flex class="text-center" v-else-if="noResult" md12 data-aos="fade" data-aos-duration="1200">
                   <h1 class="display-2 font-weight-bold mb-3">
                      No issues found on this repo!
                   </h1>
             </v-flex>
-            <v-flex md12 v-if="this.info">
+            <v-flex md12 v-if="this.info" data-aos="fade" data-aos-duration="1200">
               <v-btn class="btn"  @click="setFilter('all')" v-bind:class="{ active_color: this.filter==='all'}">All Issues</v-btn>
               <v-btn class="btn" @click="setFilter('open')" v-bind:class="{ active_color: this.filter==='open'}">Open Issues</v-btn>
               <v-btn class="btn" @click="setFilter('closed')" v-bind:class="{ active_color: this.filter==='closed'}">Closed Issues</v-btn>
               <v-btn class="btn" @click="setFilter('pr')" v-bind:class="{ active_color: this.filter==='pr'}">Pull Requests</v-btn>
             </v-flex>
-            <v-flex v-for="(issue,index) in getFilterList" :key="index"  xs12 md6 lg4 pa-4>
+            <v-flex v-for="(issue,index) in getFilterList" :key="index"  xs12 md6 lg4 pa-4 data-aos="zoom-in" data-aos-duration="800">
                <v-card elevation=4 class='card-height'>
                   <v-card-title class="card-title mb-10"><b>{{issue.title | truncate(50, '...') }}</b></v-card-title>
                   <v-card-subtitle class="desc">
@@ -54,8 +54,9 @@
                         <span>{{lab.name}}</span>
                      </v-tooltip>
                   </v-card-subtitle>
-                  <img v-if="issue.pull_request" class="icon" src="../assets/pull-request.svg">
-                  <img v-else-if="issue.state==='close'" class="icon" src="../assets/issue-closed.svg">
+                  <!-- Closed Status is precedant. Only display pr icon when it is an open pr -->
+                  <img v-if="issue.state==='closed'" class="icon" src="../assets/issue-closed.svg">
+                  <img v-else-if="issue.pull_request" class="icon" src="../assets/pull-request.svg">
                </v-card>
             </v-flex>
          </v-layout>
@@ -107,7 +108,7 @@
          //take care of case when / is at the end of URL
          id = id.substring(0, id.length-1)
        }
-       axios.get('https://api.github.com/repos/' + id +"/issues")
+       axios.get('https://api.github.com/repos/' + id +"/issues?state=all")
        .then(response =>{
          if(response.data.length === 0){
            this.noResult = true
