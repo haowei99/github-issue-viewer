@@ -8,6 +8,7 @@ Bonus Features Implmented:
 - Allow users to be able to share states via URLs to other users so that they can view results without searching!
 - Slight change to design to make it look more modern (instead of X sign, I added a home button on the nav bar)
 - Labels are truncated in case it is too long. Hovering over the labels will popup tooltip that has the full name of the label
+- Add link to issues/pull request on each card so users can refer to the issue on Github easily
 
 Logic for sorting issues:
 - Issues that are closed take precedence over pull request (if case is closed and there's a pr for the repo, only the closed icon will show up in the card)
